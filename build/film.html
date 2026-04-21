@@ -18,12 +18,13 @@
 </head>
 
 <body data-page="film">
+    <a class="skip-link" href="#main-content">Skip to main content</a>
     <div class="site-background" aria-hidden="true"></div>
     <header class="site-header">
         <div class="container">
             <nav class="nav" aria-label="Main navigation">
                 <a href="index.html" class="brand">Open Mic Odyssey</a>
-                <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links">
+                <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Open navigation menu">
                     Menu
                 </button>
                 <div class="nav-links" id="nav-links">
@@ -37,14 +38,14 @@
         </div>
     </header>
 
-    <main>
+    <main id="main-content" tabindex="-1">
         <section class="hero">
             <div class="container hero-grid">
                 <div class="hero-copy">
                     <span class="eyebrow">Feature Documentary</span>
                     <h1>
                         Open Mic Odyssey
-                        <span>Good Morning, I'm Sorry</span>
+                        <!-- <span>Good Morning, I'm Sorry</span> -->
                     </h1>
                     <p class="hero-lede">Three best friends go across America to pursue the dream...</p>
                     <div class="hero-actions">

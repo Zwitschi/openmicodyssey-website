@@ -39,9 +39,33 @@ a {
   text-decoration: none;
 }
 
+a:focus-visible,
+button:focus-visible,
+iframe:focus-visible {
+  outline: 3px solid var(--accent-strong);
+  outline-offset: 3px;
+}
+
 img {
   display: block;
   width: 100%;
+}
+
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: 0.75rem;
+  z-index: 30;
+  padding: 0.7rem 1rem;
+  border-radius: 999px;
+  background: #fff4e7;
+  color: #170d0a;
+  transform: translateY(-140%);
+  transition: transform 160ms ease;
+}
+
+.skip-link:focus-visible {
+  transform: translateY(0);
 }
 
 .site-background {
@@ -127,6 +151,7 @@ img {
   background: transparent;
   color: var(--text);
   padding: 0.6rem 0.9rem;
+  cursor: pointer;
 }
 
 .hero,

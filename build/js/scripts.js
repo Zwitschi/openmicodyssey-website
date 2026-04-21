@@ -2,10 +2,37 @@
   var nav = document.getElementById("nav-links");
   var toggle = document.querySelector(".nav-toggle");
 
+  function setMenuState(isOpen) {
+    if (!toggle || !nav) {
+      return;
+    }
+
+    nav.classList.toggle("is-open", isOpen);
+    toggle.setAttribute("aria-expanded", String(isOpen));
+    toggle.setAttribute(
+      "aria-label",
+      isOpen ? "Close navigation menu" : "Open navigation menu",
+    );
+  }
+
   if (toggle && nav) {
+    setMenuState(false);
+
     toggle.addEventListener("click", function () {
-      var isOpen = nav.classList.toggle("is-open");
-      toggle.setAttribute("aria-expanded", String(isOpen));
+      var isOpen = !nav.classList.contains("is-open");
+      setMenuState(isOpen);
+    });
+
+    nav.querySelectorAll("a").forEach(function (link) {
+      link.addEventListener("click", function () {
+        setMenuState(false);
+      });
+    });
+
+    document.addEventListener("keydown", function (event) {
+      if (event.key === "Escape") {
+        setMenuState(false);
+      }
     });
   }
 
@@ -22,6 +49,7 @@
       (page === "film" && href === "#tickets")
     ) {
       link.classList.add("is-active");
+      link.setAttribute("aria-current", "page");
     }
   });
 
