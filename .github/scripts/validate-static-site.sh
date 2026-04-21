@@ -49,7 +49,7 @@ for page in index film gallery support patreon; do
   require_text "$file" "<link rel=\"stylesheet\" href=\"css/site.css\" />"
   require_text "$file" "<script src=\"js/scripts.js\"></script>"
   require_text "$file" "<nav class=\"nav\" aria-label=\"Main navigation\">"
-  require_text "$file" "<main>"
+  require_text "$file" "<main"
   require_text "$file" "<footer class=\"site-footer\">"
 done
 
