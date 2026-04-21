@@ -1,0 +1,4 @@
+# Gitignore file for static website project
+
+# ignore instructions
+.github/instructions/
