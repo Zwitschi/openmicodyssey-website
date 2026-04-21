@@ -2,7 +2,7 @@
 
 Static HTML/CSS website with JavaScript, hosted on GitHub Pages, for the Open Mic Odyssey movie.
 
-The website is authored on the `build` branch, published by GitHub Actions to the `main` branch, and served at [https://openmicodyssey.com](https://openmicodyssey.com).
+The website is authored on the `build` branch, validated and deployed by GitHub Actions through GitHub Pages artifacts, and served at [https://openmicodyssey.com](https://openmicodyssey.com).
 
 This repository is the static-site counterpart to the richer Flask implementation in `80-movie/website`. The 81-movie site keeps the same information architecture and content model, but ships as static pages under `build/` for GitHub Pages hosting.
 
@@ -67,5 +67,28 @@ The publishing contract remains static-first:
 
 1. Make content and layout changes on the `build` branch.
 2. Keep deployable files under `build/`.
-3. Run GitHub Actions to publish the contents of `build/` to the `main` branch.
-4. Serve the published `main` branch via GitHub Pages.
+3. Let `.github/workflows/static.yml` validate the generated static site with `.github/scripts/validate-static-site.sh`.
+4. Upload the validated `build/` directory as the GitHub Pages deployment artifact.
+5. Deploy that artifact directly through GitHub Pages.
+
+## GitHub Pages Workflow
+
+The repository now uses the GitHub Pages-native workflow in `.github/workflows/static.yml`.
+
+Behavior:
+
+- triggers on pushes to the `build` branch
+- supports manual execution through `workflow_dispatch`
+- validates the `build/` output before deployment
+- uploads only the `build/` directory as the Pages artifact
+- deploys through `actions/deploy-pages`
+
+Required repository settings:
+
+- GitHub Pages should be configured to use GitHub Actions as the source
+- the workflow requires the default Pages permissions already declared in `static.yml` (`pages: write`, `id-token: write`)
+
+Important note:
+
+- the current deployment model no longer requires committing generated site output to the `main` branch for GitHub Pages delivery
+- if the legacy `.github/workflows/publish-static-site.yml` is removed, `main` stops being part of the Pages publishing path and remains only a normal git branch unless separately reused
