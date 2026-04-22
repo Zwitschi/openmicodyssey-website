@@ -92,9 +92,9 @@ img {
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(180deg, rgba(18, 13, 10, 0.48), rgba(18, 13, 10, 0.9)),
-    linear-gradient(120deg, rgba(14, 65, 120, 0.5), rgba(162, 73, 25, 0.2)),
-    radial-gradient(circle at top, rgba(255, 185, 120, 0.18), transparent 44%);
+    linear-gradient(180deg, rgba(18, 13, 10, 0.12), rgba(18, 13, 10, 0.28)),
+    linear-gradient(120deg, rgba(14, 65, 120, 0.16), rgba(162, 73, 25, 0.08)),
+    radial-gradient(circle at top, rgba(255, 185, 120, 0.1), transparent 44%);
 }
 
 .container {
