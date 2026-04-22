@@ -1,6 +1,28 @@
 (function () {
+  var backgroundVideo = document.querySelector(".site-background-video");
   var nav = document.getElementById("nav-links");
   var toggle = document.querySelector(".nav-toggle");
+
+  function startBackgroundVideo() {
+    if (!backgroundVideo) {
+      return;
+    }
+
+    var playAttempt = backgroundVideo.play();
+    if (playAttempt && typeof playAttempt.catch === "function") {
+      playAttempt.catch(function () {
+        // Ignore autoplay rejections and leave the poster/background image in place.
+      });
+    }
+  }
+
+  if (backgroundVideo) {
+    backgroundVideo.muted = true;
+    startBackgroundVideo();
+    backgroundVideo.addEventListener("loadedmetadata", startBackgroundVideo, {
+      once: true,
+    });
+  }
 
   function setMenuState(isOpen) {
     if (!toggle || !nav) {
@@ -40,14 +62,8 @@
   var links = document.querySelectorAll(".nav-links a");
 
   links.forEach(function (link) {
-    var href = link.getAttribute("href") || "";
-    if (
-      (page === "overview" && href === "index.html") ||
-      (page === "film" && href === "film.html") ||
-      (page === "gallery" && href === "gallery.html") ||
-      (page === "support" && href === "support.html") ||
-      (page === "film" && href === "#tickets")
-    ) {
+    var navTarget = link.getAttribute("data-nav") || "";
+    if (navTarget === page || (page === "film" && navTarget === "showtimes")) {
       link.classList.add("is-active");
       link.setAttribute("aria-current", "page");
     }
