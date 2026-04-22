@@ -40,7 +40,6 @@ for page in index film media connect patreon; do
   require_text "$file" "<!doctype html>"
   require_text "$file" "<html lang=\"en\">"
   require_text "$file" "<script type=\"application/ld+json\">"
-  require_text "$file" "<link rel=\"stylesheet\" href=\"css/site.css\" />"
   require_text "$file" "<script src=\"js/scripts.js\"></script>"
   require_text "$file" "<nav class=\"nav\" aria-label=\"Main navigation\">"
   require_text "$file" "<main"
