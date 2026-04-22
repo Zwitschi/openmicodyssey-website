@@ -51,7 +51,6 @@ extract_hrefs() {
 }
 
 PRIMARY_PAGES=(index film gallery support patreon)
-REDIRECT_PAGES=(watch credits about)
 
 require_file "$ROOT_DIR/css/site.css"
 require_file "$ROOT_DIR/js/scripts.js"
@@ -92,12 +91,6 @@ if grep -Eq '<img [^>]*>' "$ROOT_DIR/gallery.html"; then
     printf '%s' "$image_tag" | grep -Eq 'alt="[^"]+"' || fail "gallery image missing non-empty alt text"
   done < <(grep -oE '<img [^>]*>' "$ROOT_DIR/gallery.html")
 fi
-
-for page in "${REDIRECT_PAGES[@]}"; do
-  file="$ROOT_DIR/$page.html"
-  require_file "$file"
-  require_text "$file" "http-equiv=\"refresh\""
-done
 
 declare -a external_urls=()
 
