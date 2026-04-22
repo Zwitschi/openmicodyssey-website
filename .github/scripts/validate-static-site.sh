@@ -26,8 +26,8 @@ require_nonempty() {
 
 require_file "$ROOT_DIR/index.html"
 require_file "$ROOT_DIR/film.html"
-require_file "$ROOT_DIR/gallery.html"
-require_file "$ROOT_DIR/support.html"
+require_file "$ROOT_DIR/media.html"
+require_file "$ROOT_DIR/connect.html"
 require_file "$ROOT_DIR/patreon.html"
 require_file "$ROOT_DIR/css/site.css"
 require_file "$ROOT_DIR/js/scripts.js"
@@ -35,7 +35,7 @@ require_file "$ROOT_DIR/js/scripts.js"
 require_nonempty "$ROOT_DIR/css/site.css"
 require_nonempty "$ROOT_DIR/js/scripts.js"
 
-for page in index film gallery support patreon; do
+for page in index film media connect patreon; do
   file="$ROOT_DIR/$page.html"
   require_text "$file" "<!doctype html>"
   require_text "$file" "<html lang=\"en\">"
