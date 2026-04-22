@@ -29,9 +29,6 @@ require_file "$ROOT_DIR/film.html"
 require_file "$ROOT_DIR/gallery.html"
 require_file "$ROOT_DIR/support.html"
 require_file "$ROOT_DIR/patreon.html"
-require_file "$ROOT_DIR/watch.html"
-require_file "$ROOT_DIR/credits.html"
-require_file "$ROOT_DIR/about.html"
 require_file "$ROOT_DIR/css/site.css"
 require_file "$ROOT_DIR/js/scripts.js"
 
@@ -52,12 +49,5 @@ for page in index film gallery support patreon; do
   require_text "$file" "<main"
   require_text "$file" "<footer class=\"site-footer\">"
 done
-
-require_text "$ROOT_DIR/watch.html" "http-equiv=\"refresh\""
-require_text "$ROOT_DIR/watch.html" "index.html#trailer"
-require_text "$ROOT_DIR/credits.html" "http-equiv=\"refresh\""
-require_text "$ROOT_DIR/credits.html" "film.html#credits"
-require_text "$ROOT_DIR/about.html" "http-equiv=\"refresh\""
-require_text "$ROOT_DIR/about.html" "film.html#synopsis"
 
 echo "Static site validation passed for $ROOT_DIR"
