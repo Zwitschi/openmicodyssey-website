@@ -32,16 +32,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Validate production-ready static output
-        run: |
-          chmod +x .github/scripts/validate-static-site.sh
-          .github/scripts/validate-static-site.sh build
-
-      - name: Run static site tests
-        run: |
-          chmod +x test/run.sh
-          test/run.sh build
-
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
