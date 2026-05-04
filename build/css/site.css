@@ -1,3 +1,11 @@
+@font-face {
+  font-family: "Folio Std Bold Condensed";
+  src: url("/static/fonts/Folio-Std-Bold-Condensed.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   --black: #120d0a;
   --deep-burgundy: #231611;
@@ -23,7 +31,13 @@ html {
 }
 
 body {
-  font-family: Georgia, "Times New Roman", serif;
+  font-family:
+    "Inter",
+    system-ui,
+    -apple-system,
+    "Segoe UI",
+    Roboto,
+    sans-serif;
   background-color: var(--black);
   color: var(--text-main);
   min-height: 100vh;
@@ -146,6 +160,7 @@ img {
 }
 
 .brand-title {
+  font-family: "Folio Std Bold Condensed", "Arial Narrow", Arial, sans-serif;
   font-size: clamp(1.1rem, 2vw, 1.3rem);
   font-weight: 700;
   letter-spacing: 0.08em;
@@ -180,6 +195,34 @@ img {
   color: var(--text-main);
   background: rgba(255, 255, 255, 0.08);
   outline: none;
+}
+
+.nav-links .nav-social {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.nav-social a {
+  text-decoration: none;
+  margin-top: 0;
+}
+.nav-social a:hover,
+.nav-social a:focus-visible {
+  text-decoration: none;
+  outline: none;
+}
+
+.nav-social img {
+  width: 1.2rem;
+  height: 1.2rem;
+  filter: grayscale(100%) brightness(120%);
+  transition: filter 160ms ease;
+  margin: 0;
+}
+.nav-social a:hover img,
+.nav-social a:focus-visible img {
+  filter: grayscale(0%) brightness(120%);
 }
 
 .nav-toggle {
@@ -341,6 +384,7 @@ img {
 }
 
 .overview-page-title {
+  font-family: "Folio Std Bold Condensed", "Arial Narrow", Arial, sans-serif;
   font-size: clamp(2.8rem, 6vw, 5rem);
   line-height: 0.95;
   margin: 0.75rem 0 1rem;
@@ -625,6 +669,7 @@ img {
 }
 
 .hero h1 {
+  font-family: "Folio Std Bold Condensed", "Arial Narrow", Arial, sans-serif;
   font-size: clamp(2.6rem, 5vw, 4.8rem);
   line-height: 1.1;
   margin-bottom: 0;
@@ -633,6 +678,7 @@ img {
 }
 
 .hero-compact h1 {
+  font-family: "Folio Std Bold Condensed", "Arial Narrow", Arial, sans-serif;
   font-size: clamp(2.2rem, 4vw, 3.5rem);
 }
 
@@ -864,6 +910,7 @@ section {
 }
 
 .section-header h2 {
+  font-family: "Folio Std Bold Condensed", "Arial Narrow", Arial, sans-serif;
   font-size: clamp(1.6rem, 3vw, 2.3rem);
   margin-bottom: 0.35rem;
   color: var(--golden-amber);
@@ -874,6 +921,10 @@ section {
 .section-header p {
   color: var(--text-muted);
   max-width: 60ch;
+}
+
+.section-header p.hero-sublede {
+  max-width: none;
 }
 
 .content-card {
@@ -1037,9 +1088,9 @@ section {
   margin-top: 0.85rem;
 }
 
-.grid-3 {
+.grid-4 {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 1.25rem;
 }
 
@@ -1176,4 +1227,22 @@ section {
   .site-background-video {
     opacity: 1;
   }
+}
+
+/* Easteregg: TeslaCam map link (hidden until hover) */
+.easteregg {
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  font-size: 0.8rem;
+}
+.easteregg:hover,
+.site-footer:hover .easteregg {
+  opacity: 0.6;
+}
+.easteregg-link {
+  color: var(--text-muted);
+  text-decoration: none;
+}
+.easteregg-link:hover {
+  text-decoration: underline;
 }
